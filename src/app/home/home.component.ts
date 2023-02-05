@@ -26,6 +26,7 @@ export class HomeComponent implements OnDestroy{
       this.time = newTime;
       this.checkWeckerList();
     });
+    this.silent = weckerDataService.getSilent();
     this.weckerList = weckerDataService.getWeckerData();
   }
 
@@ -77,5 +78,6 @@ export class HomeComponent implements OnDestroy{
   }
   onSilentChanged($event: MatSlideToggleChange): void {
     this.silent = $event.checked;
+    this.weckerDataService.setSilent($event.checked);
   }
 }

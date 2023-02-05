@@ -1,6 +1,8 @@
 import {Component, Inject, OnDestroy} from '@angular/core';
 import {WeckerDTO} from "../dto/WeckerDTO";
 import {MAT_BOTTOM_SHEET_DATA, MatBottomSheetRef} from "@angular/material/bottom-sheet";
+import {WeckerDataService} from "../service/wecker-data.service";
+import {MatSlideToggleChange} from "@angular/material/slide-toggle";
 
 @Component({
   selector: 'app-wecker-ringing',
@@ -11,10 +13,11 @@ export class WeckerRingingComponent implements OnDestroy{
   private audio: HTMLAudioElement;
   public wecker: WeckerDTO;
   constructor(@Inject(MAT_BOTTOM_SHEET_DATA) public data: { wecker: WeckerDTO },
-              private _bottomSheetRef: MatBottomSheetRef<WeckerRingingComponent>) {
+              private _bottomSheetRef: MatBottomSheetRef<WeckerRingingComponent>,
+              public weckerDataService: WeckerDataService) {
     this.wecker = data.wecker;
     this.audio = new Audio('assets/alarm-sound-1.mp3');
-    this.audio.play();
+    if(!weckerDataService.getSilent()) this.audio.play();
   }
   ngOnDestroy() {
     this.audio.pause();
@@ -30,5 +33,10 @@ export class WeckerRingingComponent implements OnDestroy{
   onCancelClicked($event: MouseEvent) {
     this._bottomSheetRef.dismiss(this.wecker);
     $event.preventDefault();
+  }
+
+  onSilentChanged($event: MatSlideToggleChange) {
+    if($event.checked) this.audio.pause();
+    else this.audio.play();
   }
 }
