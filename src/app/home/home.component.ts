@@ -39,4 +39,8 @@ export class HomeComponent implements OnDestroy{
   ngOnDestroy(): void {
         this.timeSubscription.unsubscribe();
     }
+
+  onWeckerChanged($event: WeckerDTO) {
+    
+  }
 }

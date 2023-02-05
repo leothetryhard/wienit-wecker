@@ -1,12 +1,27 @@
-<div class="container">
-  <div class="row">
+<div class="container" style="max-width: 1200px">
+  <div class="row bg-primary text-white">
     <div class="col-6">
       <h1 class="lead">Wecker</h1>
     </div>
-    <div class="col-6">
+    <div class="col-6 text-end">
       <h1 class="lead">
         <div>{{ time | date: 'shortTime' }}</div>
       </h1>
+    </div>
+  </div>
+  <div class="row text-center text-muted my-4">
+    <div *ngIf="weckerList.length == 0">
+      <p>Noch kein Wecker erstellt</p>
+    </div>
+    <div *ngFor="let wecker of weckerList">
+      <app-wecker-teaser [wecker]="wecker" (changedWecker)="onWeckerChanged($event)"></app-wecker-teaser>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12 text-center">
+      <button mat-fab color="primary" aria-label="add Wecker" (click)="addWecker()">
+        <mat-icon>alarm_add</mat-icon>
+      </button>
     </div>
   </div>
   <div>
