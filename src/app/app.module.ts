@@ -12,6 +12,12 @@ import { WeckerRingingComponent } from './wecker-ringing/wecker-ringing.componen
 import {MatSlideToggleModule} from "@angular/material/slide-toggle";
 import localeDE from '@angular/common/locales/de';
 import {registerLocaleData} from "@angular/common";
+import {MatIconModule} from "@angular/material/icon";
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {ReactiveFormsModule} from "@angular/forms";
+import {MatButtonModule} from "@angular/material/button";
+import {MatInputModule} from "@angular/material/input";
+import {MatBottomSheetModule} from "@angular/material/bottom-sheet";
 registerLocaleData(localeDE);
 @NgModule({
   declarations: [
@@ -26,7 +32,13 @@ registerLocaleData(localeDE);
     AppRoutingModule,
     BrowserAnimationsModule,
     MatListModule,
-    MatSlideToggleModule
+    MatSlideToggleModule,
+    MatIconModule,
+    MatFormFieldModule,
+    ReactiveFormsModule,
+    MatButtonModule,
+    MatBottomSheetModule,
+    MatInputModule
   ],
   providers: [{ provide: LOCALE_ID, useValue: 'de-AT' }],
   bootstrap: [AppComponent]
