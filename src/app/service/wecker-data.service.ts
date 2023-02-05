@@ -15,9 +15,9 @@ export class WeckerDataService {
     let wList = localStorage.getItem('weckerData');
     if (wList != null){
       this.weckerList = JSON.parse(wList);
-      return this.weckerList;
     }
-    return new Array<WeckerDTO>();
+
+    return this.weckerList;
   }
 
   public setWeckerData(weckerData: Array<WeckerDTO>){
