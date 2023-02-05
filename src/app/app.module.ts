@@ -18,6 +18,8 @@ import {ReactiveFormsModule} from "@angular/forms";
 import {MatButtonModule} from "@angular/material/button";
 import {MatInputModule} from "@angular/material/input";
 import {MatBottomSheetModule} from "@angular/material/bottom-sheet";
+import {MatSnackBarModule} from "@angular/material/snack-bar";
+import {MatCheckboxModule} from "@angular/material/checkbox";
 registerLocaleData(localeDE);
 @NgModule({
   declarations: [
@@ -25,7 +27,7 @@ registerLocaleData(localeDE);
     HomeComponent,
     WeckerTeaserComponent,
     WeckerDetailComponent,
-    WeckerRingingComponent
+    WeckerRingingComponent,
   ],
   imports: [
     BrowserModule,
@@ -38,7 +40,9 @@ registerLocaleData(localeDE);
     ReactiveFormsModule,
     MatButtonModule,
     MatBottomSheetModule,
-    MatInputModule
+    MatSnackBarModule,
+    MatInputModule,
+    MatCheckboxModule
   ],
   providers: [{ provide: LOCALE_ID, useValue: 'de-AT' }],
   bootstrap: [AppComponent]

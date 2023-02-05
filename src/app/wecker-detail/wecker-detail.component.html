@@ -1,5 +1,5 @@
 <div class="container px-0 mx-0 py-2">
-  <div class="row border-bottom">
+  <div class="row">
     <div class="col-2">
     </div>
     <div class="col-8 text-center">
@@ -10,39 +10,39 @@
     </div>
   </div>
   <form [formGroup]="weckerForm">
-    <div class="row py-2 row-cols-4 border-bottom">
-      <div class="col text-sm-end">
-        Gefördert
-      </div>
-      <div class="col border-end">
-        <mat-slide-toggle formControlName="subsidized"></mat-slide-toggle>
-      </div>
-      <div class="col text-sm-end">
-        Freifinanziert
-      </div>
-      <div class="col">
-        <mat-slide-toggle formControlName="private"></mat-slide-toggle>
-      </div>
-    </div>
-    <div class="row pt-1">
+    <div class="row pt-4">
       <mat-form-field appearance="outline" style="width: 50%;" class="p-0 m-0">
         <mat-label>Stunde</mat-label>
-        <input matInput type="text" formControlName="lsMin">
-        <span matSuffix><strong>m²</strong></span>
+        <input matInput type="number" formControlName="hours">
       </mat-form-field>
       <mat-form-field appearance="outline" style="width: 50%;" class="p-0 m-0">
         <mat-label>Minute</mat-label>
-        <input matInput type="text" formControlName="lsMax">
-        <span matSuffix><strong>m²</strong></span>
+        <input matInput type="number" formControlName="minutes">
+      </mat-form-field>
+      <mat-form-field appearance="outline" style="width: 100%;" class="p-0 m-0">
+        <mat-label>Name</mat-label>
+        <input matInput type="text" formControlName="name">
       </mat-form-field>
     </div>
+    <div [formGroup]="weekdays">
+      <div class="row text-center justify-content-center">
+        <div class="col-1 px-0">Mo<br><mat-checkbox formControlName="Monday"></mat-checkbox></div>
+        <div class="col-1 px-0">Di<br><mat-checkbox formControlName="Tuesday"></mat-checkbox></div>
+        <div class="col-1 px-0">Mi<br><mat-checkbox formControlName="Wednesday"></mat-checkbox></div>
+        <div class="col-1 px-0">Do<br><mat-checkbox formControlName="Thursday"></mat-checkbox></div>
+        <div class="col-1 px-0">Fr<br><mat-checkbox formControlName="Friday"></mat-checkbox></div>
+        <div class="col-1 px-0">Sa<br><mat-checkbox formControlName="Saturday"></mat-checkbox></div>
+        <div class="col-1 px-0">So<br><mat-checkbox formControlName="Sunday"></mat-checkbox></div>
+      </div>
+    </div>
+
     <div class="row pt-3 text-center">
       <div class="col" style="width: 45%;">
         <button mat-stroked-button style="width: 100%;" (click)="onCancelClicked($event)">Abbruch</button>
       </div>
       <div class="col" style="width: 45%;">
         <button mat-raised-button color="primary" style="width: 100%;" type="submit" (click)="onSubmitClicked($event)">
-          Fertig
+          Aktivieren
         </button>
       </div>
     </div>

@@ -13,11 +13,7 @@ export class WeckerDetailComponent {
   weckerForm = this._formBuilder.group({
     hours: ['', Validators.required],
     minutes: ['', Validators.required],
-    name: ["Alarm", Validators.required],
-    weekDays: [null, Validators.required],
-    repeats: [true, Validators.required],
-    enabled: [true, Validators.required],
-
+    name: ["Alarm", Validators.required]
   });
 
   weekdays = this._formBuilder.group({
@@ -38,7 +34,7 @@ export class WeckerDetailComponent {
 
   onSubmitClicked(event: MouseEvent): void {
     if (!this.weckerForm.valid) {
-      this.snackBar.open("Ungültiger Eingabewert. Ganzen Zahlen eingeben oder Feld freilassen.", 'OK', {
+      this.snackBar.open("Füllen Sie alle Pflichtfelder aus!", 'OK', {
         duration: 5000,
         horizontalPosition: 'center',
         verticalPosition: 'top',
@@ -49,7 +45,18 @@ export class WeckerDetailComponent {
     const data = this.weckerForm.value;
     let newWecker = new WeckerDTO();
     if (data.hours != undefined && data.minutes != undefined){
+      if(parseInt(data.hours) > 23 || parseInt(data.minutes) > 59 || parseInt(data.hours) < 0 || parseInt(data.minutes) < 0){
+        this.snackBar.open("Ungültiger Eingabewert. Stunden: 0-23, Minuten: 0-59", 'OK', {
+          duration: 5000,
+          horizontalPosition: 'center',
+          verticalPosition: 'top',
+          panelClass: ["error-snackbar"]
+        });
+        return;
+      }
       let time = new Date();
+      time.setSeconds(0);
+      time.setMilliseconds(0)
       time.setHours(parseInt(data.hours));
       time.setMinutes(parseInt(data.minutes));
       newWecker.time = time;
