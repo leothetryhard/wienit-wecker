@@ -14,7 +14,7 @@ export class TimeService {
       setInterval(() =>{
         if(curTime == undefined || new Date().getTime() != curTime.getTime()){
           curTime = new Date();
-          curTime.setHours(curTime.getHours() + 1)
+          curTime.setHours(curTime.getHours())
           observer.next(curTime);
         }
       }, 1000);
