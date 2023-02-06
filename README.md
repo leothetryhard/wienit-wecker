@@ -10,4 +10,4 @@ Ein Wecker implementiert in Angular, Bootstrap und Angular Material.
 * Snooze-Funktion
 
 ## Run
-https://stackblitz.com/leothetryhard/wienit-wecker
+https://stackblitz.com/github/leothetryhard/wienit-wecker
